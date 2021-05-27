@@ -10,22 +10,9 @@
     }
   </script>
   -->
-  
-  <!-- Load polyfills -->
-  <script 
-    src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
-    defer>
-  </script> 
 
   <!-- Load components via WebComponents.waitFor -->
-  <script type="module">
-    window.WebComponents = window.WebComponents || { 
-      waitFor(cb){ addEventListener('WebComponentsReady', cb) }
-    } 
-    WebComponents.waitFor(async () => { 
-      import('./src/start-lit-element.js');
-    });
-  </script>
+  <script type="module" src="src/web-notification-message.js"></script>
   
   <!-- Change stuff here for your app -->
   <meta name="description" content="start-lit-element">
@@ -37,26 +24,10 @@
   <link rel="shortcut icon" href="/manifest/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="UTF-8">
+
+  
 </head>
 <body>
-
-  <!-- 
-    To configure starting state of the checkbox from markup: 
-    <start-lit-element pie="true"> 
-  -->
   
-  <start-lit-element>
-    <!-- Placeholders to improve time to first paint -->
-    <h1>Start LitElement!</h1>
-    <p>Hello World from LitElement</p>
-
-    <!-- Check for JavaScript -->
-    <p id="jsyes"></p>
-    <script type="text/javascript">
-      document.getElementById('jsyes').innerHTML='Loading...';
-    </script>
-    <noscript>
-      Could not render the custom element. Check that JavaScript is enabled.
-    </noscript>
-  </start-lit-element>
+  <web-notification-message></web-notification-message>
 </body>
