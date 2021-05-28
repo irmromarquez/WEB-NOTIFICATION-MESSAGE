@@ -26,15 +26,42 @@ export class webNotificationMessage extends LitElement {
         super();
         this.dataMessage = new configMessage().dataCard;
         this.button = "Button";
+
+        this.addEventListener('icon-click', (evt) => {
+          if(evt.detail.icon == 'close') this.dispayNone(evt.detail.id);
+          if(evt.detail.icon == 'arrow-down') this.displayCard(evt.detail.id);
+          
+          this.requestUpdate();
+        })
+    }
+
+    dispayNone(id) {
+      this.dataMessage.map(element => {
+        if(id == element.idCard) element.display = 'none';
+      })
+
+    }
+
+    displayCard(id) {
+      this.dataMessage.map(element => {
+        if(id == element.idCard) element.display = '';
+      })
     }
 
     get paintCard() {
         return html`
             ${this.dataMessage.map((element) => {
                 return html`
-                    <h4>${element.title}</h4>
+                    <h4>${element.title} ${element.display == 'none'
+                          ? html `<fontawesome-icon
+                          class="align-middle"
+                          icon="arrow-down"
+                          icon-group="${element.idCard}"
+                        ></fontawesome-icon>`
+                          : html ``
+                  }</h4>
 
-                    <div class="alert alert-${element.typeAlert}">
+                    <div class="alert alert-${element.typeAlert} d-${element.display}">
                         <div class="row">
                           <div class="col-12 row m-0 p-0">
                             <div class="col-1">
@@ -50,6 +77,7 @@ export class webNotificationMessage extends LitElement {
                             <div class="col-1 mr-4">
                             <fontawesome-icon
                                         icon="close"
+                                        icon-group="${element.idCard}"
                                     ></fontawesome-icon>
                             </div>
 

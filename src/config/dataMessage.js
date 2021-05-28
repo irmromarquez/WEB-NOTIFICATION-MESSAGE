@@ -7,7 +7,8 @@ export class configMessage {
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',
-            typeAlert: 'primary'
+            typeAlert: 'primary',
+            display: ''
         
         },
 
@@ -17,7 +18,8 @@ export class configMessage {
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',
-            typeAlert: 'success'
+            typeAlert: 'success',
+            display: ''
         
         },
 
@@ -27,7 +29,8 @@ export class configMessage {
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',
-            typeAlert: 'danger'
+            typeAlert: 'danger',
+            display: ''
         }
     ]
 }
