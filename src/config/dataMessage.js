@@ -3,7 +3,7 @@ export class configMessage {
     dataCard = [
         {
             idCard: 'card1',
-            title: 'default',
+            title: 'Default',
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',
@@ -13,7 +13,7 @@ export class configMessage {
 
         {
             idCard: 'card2',
-            title: 'success',
+            title: 'Success',
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',
@@ -23,7 +23,7 @@ export class configMessage {
 
         {
             idCard: 'card3',
-            title: 'error',
+            title: 'Error',
             subtitle: 'Information title',
             message: 'Notification message',
             description: 'Descripcion...',

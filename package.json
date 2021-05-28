@@ -11,6 +11,8 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "latest",
-    "lit-element": "latest"
+    "lit-element": "latest",
+    "button-element": "https://github.com/irmromarquez/button-element.git#develop",
+    "fontawesome-icon": "https://github.com/rauldevden/fontawesome-icon.git#master"
   }
 }
