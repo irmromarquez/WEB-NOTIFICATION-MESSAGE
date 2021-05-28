@@ -1,63 +1,114 @@
-import { LitElement, html } from 'lit-element';
-import { configMessage } from './config/dataMessage';
+import { LitElement, html } from "lit-element";
+import { configMessage } from "./config/dataMessage";
 
-import 'button-element/button-element';
-import 'fontawesome-icon/fontawesome-icon';
+import "button-element/button-element";
+import "fontawesome-icon/fontawesome-icon";
+
+// STYLES
+import bootstrap from './styles/bootstrap';
+import customCss from './styles/web-notification-message-style'
+
 
 export class webNotificationMessage extends LitElement {
 
-  static get properties() {
-    return {
-      dataMessage: {type: Array},
-      button: { type: String, attribute: 'name-button'}
-    };
+  static get styles() {
+    return [bootstrap, customCss]
   }
+  
+    static get properties() {
+        return {
+            dataMessage: { type: Array },
+            button: { type: String, attribute: "name-button" },
+        };
+    }
 
-  constructor() {
-    super();
-    this.dataMessage = new configMessage().dataCard;
-    this.button = 'Button';
-    
-  }
+    constructor() {
+        super();
+        this.dataMessage = new configMessage().dataCard;
+        this.button = "Button";
+    }
 
-  get paintCard() {
-    return html `
-    ${this.dataMessage.map(element => {
-      return html`
-      <h4>${element.title}</h4>
+    get paintCard() {
+        return html`
+            ${this.dataMessage.map((element) => {
+                return html`
+                    <h4>${element.title}</h4>
+
+                    <div class="alert alert-${element.typeAlert}">
+                        <div class="row">
+                          <div class="col-12 row m-0 p-0">
+                            <div class="col-1">
+                              <fontawesome-icon
+                                icon="info"
+                              ></fontawesome-icon>
+                            </div>
+
+                            <div class="col-10">
+                              <h3>${element.subtitle}</h3>
+                            </div>
+
+                            <div class="col-1 mr-4">
+                            <fontawesome-icon
+                                        icon="close"
+                                    ></fontawesome-icon>
+                            </div>
+
+                          </div>
+
+                          <div class="col-12 row m-0 p-0">
+                            
+                            <div class="col offset-1">
+                              <h5>${element.message}</h5>
+                            </div>
+                          </div>
+
+                          <div class="col-12 row m-0 p-0">
+                            <div class="col offset-1 pb-4">
+                              <strong>${element.description}</strong>
+                            </div>
+                          </div>
+
+
+                          <div class="col offset-1 align-middle">
+
+                          <button-element
+                                identifier="${element.idCard}}"
+                                .name="${this.button}"
+                                .identifier="${element.idCard}"
+                            ></button-element>
+                            <a class="m-link text-decoration-none text-dark"> 
+
+                              <fontawesome-icon
+                              class="align-middle"
+                                icon="info"
+                                style="--icon-size:16px"
+                              ></fontawesome-icon>
+                              <span>Link</span>
+
+                            </a>
+                            
+
+                          </div>
+                            
+                        </div>
+                    </div>
+                `;
+            })}
+        `;
+    }
+
+    render() {
+        return html`
             
-      <div class="alert alert-${element.typeAlert}">
-        This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 
-        <button-element
-          identifier="${element.idCard}}"
-          .name="${this.button}"
-          .identifier="${element.idCard}"
-        ></button-element>
-
-        <fontawesome-icon></fontawesome-icon>
-
-      </div>
-      
-      `
-    })}
-    `
-  }
-
-  render() {
-    return html`
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-    <div class="container">
-      ${this.paintCard}
-    </div>
-    
-    `;
-  }
-
+            <style>
+              :host {
+                --icon-size:24px;
+              }
+            </style>
+            <div class="container">${this.paintCard}</div>
+        `;
+    }
 }
 
-
-customElements.define('web-notification-message', webNotificationMessage);
+customElements.define("web-notification-message", webNotificationMessage);

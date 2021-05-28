@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,KAAK,CAAA;EACD,eAAe,CAAA,QAAC;EAChB,iBAAiB,CAAA,QAAC;CACrB;;AAED,AAAA,OAAO,CAAA;EACH,KAAK,EATO,OAAO;EAUnB,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "web-notification-message-style.scss"
+    ],
+    "names": [],
+    "file": "web-notification-message-style.css"
+}
